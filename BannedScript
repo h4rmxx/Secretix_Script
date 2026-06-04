@@ -1,0 +1,47 @@
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "BottomRightNotify"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ResetOnSpawn = false
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 300, 0, 60)
+Frame.Position = UDim2.new(1, -320, 1, -80)
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.BackgroundTransparency = 0.25
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = Frame
+
+local Text = Instance.new("TextLabel")
+Text.Size = UDim2.new(1, -20, 1, -20)
+Text.Position = UDim2.new(0, 10, 0, 10)
+Text.BackgroundTransparency = 1
+Text.Text = "du wurdest vom NYX Script gebannt, mach ein ticket auf dem discord auf"
+Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text.TextScaled = true
+Text.Font = Enum.Font.GothamBold
+Text.Parent = Frame
+
+Frame.BackgroundTransparency = 1
+Text.TextTransparency = 1
+
+task.spawn(function()
+    for i = 1, 20 do
+        Frame.BackgroundTransparency = 1 - (i * 0.04)
+        Text.TextTransparency = 1 - (i * 0.05)
+        task.wait(0.02)
+    end
+end)
+
+task.delay(15, function()
+    for i = 1, 20 do
+        Frame.BackgroundTransparency = Frame.BackgroundTransparency + 0.04
+        Text.TextTransparency = Text.TextTransparency + 0.05
+        task.wait(0.02)
+    end
+    ScreenGui:Destroy()
+end)
